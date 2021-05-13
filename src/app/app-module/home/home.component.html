@@ -1,0 +1,11 @@
+
+    <div class="main-div">
+    <mat-grid-list cols="4" rowHeight="250px">
+        <mat-grid-tile
+            *ngFor="let app of apps">
+            <mat-card class="card z-depth">
+                {{app.appName}}
+            </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>

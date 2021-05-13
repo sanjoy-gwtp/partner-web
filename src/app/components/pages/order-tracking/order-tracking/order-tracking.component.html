@@ -1,0 +1,81 @@
+<div class="my-account sec-padding">
+    <div class="container">
+        <mat-card fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start" class="p-0">
+            <div class="my-account-wrap p-0" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start start">
+
+                <div class="register-wrapper" fxFlex="100" fxFlex.gt-md="100" fxFlex.md="100">
+                    <div class="title">
+                        <h3>Order Tracking</h3>
+                    </div>
+                    <div class="register-body">
+                        <div fxLayout="row wrap">
+                            <div fxFlex="100" fxFlex.gt-sm="100" class="px-1 pr-15" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                                <mat-accordion class="example-headers-align" multi>
+
+                                    <mat-expansion-panel *ngFor="let order of orders">
+
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                <div style="width: 200px;">
+                                                    Order # {{order.id}}
+                                                </div>
+                                            </mat-panel-title>
+                                            <mat-panel-description>
+                                                <div style="width: 400px;" class="p-3">Order Date: {{order.placeDateExt
+                                                    |
+                                                    date:
+                                                    'medium'}}
+                                                </div>
+                                                <div style="width: 400px;" class="p-3"> Order Status:
+                                                    {{order.orderStatus}}</div>
+                                            </mat-panel-description>
+                                        </mat-expansion-panel-header>
+
+                                        <div class="cart-wrapper">
+                                            <mat-card *ngIf="order.items.length" class="p-0">
+                                                <div class="mat-table cart-table">
+                                                    <div class="mat-header-row">
+                                                        <div class="mat-header-cell">Name</div>
+                                                        <div class="mat-header-cell">Price</div>
+                                                        <div class="mat-header-cell">Quantity</div>
+                                                        <div class="mat-header-cell">Total</div>
+                                                    </div>
+                                                    <div *ngFor="let item of order.items" class="mat-row">
+                                                        <div class="mat-cell"><a
+                                                                class="product-name">{{item.productName}}</a></div>
+                                                        <div class="mat-cell price">{{item.price | number :
+                                                            '1.2-2'}}</div>
+                                                        <div class="mat-cell price">
+                                                            {{item.quantity | number : '1.2-2'}}
+                                                        </div>
+                                                        <div class="mat-cell total">{{item.price * item.quantity |
+                                                            number : '1.2-2' }}</div>
+                                                    </div>
+                                                    <div class="mat-row">
+                                                        <div class="mat-cell text-right">
+                                                            <div fxLayout="column" fxLayoutAlign="center end"
+                                                                class="grand-total px-2">
+                                                                <span class="new-price">Grand total:
+                                                                    {{order.salesPrice |
+                                                                    currency:productsService?.currency:
+                                                                    'symbol'}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </mat-card>
+                                        </div>
+
+                                    </mat-expansion-panel>
+
+                                </mat-accordion>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+
+    </div>
+</div>

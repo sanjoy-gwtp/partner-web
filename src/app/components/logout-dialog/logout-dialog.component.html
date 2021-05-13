@@ -1,0 +1,22 @@
+<div class="commerce-buttons" fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-button class="flex-row-button mat-button" fxLayoutAlign="space-between center"
+        [matMenuTriggerFor]="menu">
+        <div class="mat-button-wrapper">
+            <div class="top-cart">
+                <a>
+                    <mat-icon>person</mat-icon>
+                    <span>{{loggedInUserName}}</span>
+                </a>
+            </div>
+        </div>
+    </button>
+    <mat-menu class="spCard-main" #menu="matMenu">
+        <!-- <button mat-menu-item [routerLink]="['/content-video']">Content Video</button>
+        <button mat-menu-item [routerLink]="['/training-video']">Training Video</button> -->
+        <button mat-menu-item [routerLink]="['/order-tracking']">Order Tracking</button>
+        <button mat-menu-item [routerLink]="['/change-password']">Change Password</button>
+        <button (click)="doLogout()" mat-menu-item>Logout</button>
+    </mat-menu>
+
+</div>

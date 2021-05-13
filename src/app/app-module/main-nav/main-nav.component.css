@@ -1,0 +1,32 @@
+.sidenav-container {
+    height: 100%;
+  }
+  
+  .sidenav {
+    top: 56px;
+    width: 200px;
+    background: #f2f2f2;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  }
+  
+  
+  .tool{
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    content: "";
+    height: 56px;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background:  #4285f4;
+  }
+  .spacer{
+    flex: 1 1 auto;
+  }
+  .toolicon{
+    padding: 0 10px;
+  }.height56{
+    height: 56px;
+  }
+  

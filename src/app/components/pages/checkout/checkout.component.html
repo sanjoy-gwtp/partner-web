@@ -1,0 +1,160 @@
+<div class="container">
+  <div class="checkout sec-padding">
+    <div fxLayout="row wrap" class="">
+
+      <div class="billing-details  pr-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
+        <div class="header-title">
+          <h2>Delivery Address</h2>
+        </div>
+
+        <form fxLayout="row wrap" [formGroup]="checkOutForm" (ngSubmit)="checkOutForm.valid && doPlaceOrder($event)">
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="First name (required)" formControlName="firstName"
+                [(ngModel)]="deliveryAddress.firstName" name="firstName" required>
+              <mat-error *ngIf="checkOutForm.get('firstName').hasError('required')">Please enter a first name
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Last name (required)" formControlName="lastName"
+                [(ngModel)]="deliveryAddress.lastName" name="lastName" required>
+              <mat-error *ngIf="checkOutForm.get('lastName').hasError('required')">Please enter a last name
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Company name" name="company" [(ngModel)]="deliveryAddress.company"
+                [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Address (required)" formControlName="address"
+                [(ngModel)]="deliveryAddress.address" name="address" required>
+              <mat-error *ngIf="checkOutForm.get('address').hasError('required')">Please enter a last name
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="City" [(ngModel)]="deliveryAddress.city" name="City"
+                [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Country (required)" formControlName="country"
+                [(ngModel)]="deliveryAddress.country" name="country" required>
+              <mat-error *ngIf="checkOutForm.get('country').hasError('required')">Please enter country
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Postcode (required)" formControlName="postalCode"
+                [(ngModel)]="deliveryAddress.postalCode" name="postalCode" required>
+              <mat-error *ngIf="checkOutForm.get('postalCode').hasError('required')">Please enter country
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Email Address" [(ngModel)]="deliveryAddress.email"
+                [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <input matInput placeholder="Phone (required)" formControlName="phoneNumber"
+                [(ngModel)]="deliveryAddress.phoneNumber" name="phoneNumber" required>
+              <mat-error *ngIf="checkOutForm.get('phoneNumber').hasError('required')">Please enter country
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- <div class="add-info">
+            <h3>Additional information</h3>
+            <p class="text-muted">Order notes (optional)</p>
+          </div>
+          <div fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+            <mat-form-field class="w-100">
+              <textarea placeholder="Post content" matInput rows="4" ngModel name="content"></textarea>
+            </mat-form-field>
+          </div>
+          <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+            <button class="btn-project" mat-raised-button color="primary" type="submit">Submit Review</button>
+          </div> -->
+          <button id="hiddenSaveButton" type="submit" style="display: none;">hiddenSaveButton</button>
+        </form>
+      </div>
+
+      <div class="mainOrder-wrapper pl-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
+        <div class="main-order ">
+          <div class="order-box">
+
+            <div class="title-box">
+              <div>Product <span class="tl-amount"> Total</span></div>
+            </div>
+
+            <ul class="price-list" *ngIf='buyProducts.length'>
+              <li *ngFor="let item of buyProducts">
+                {{ item.product.name }} × {{ item.quantity }}
+                <span>
+                  {{ item.product.price * item.quantity | currency:productService?.currency:'symbol' }}
+                </span>
+              </li>
+            </ul>
+
+            <ul class="quantity" *ngIf='buyProducts.length <= 0'>
+              <li class="empty-checkout"> There are no products in cart </li>
+            </ul>
+
+            <ul class="total-amount">
+              <li>
+                Sub Total <span class="amount">{{ getSubTotal() | async |
+                  currency:productService?.currency:'symbol'}}</span>
+              </li>
+            </ul>
+            <ul class="total-amount">
+              <li *ngIf='buyProducts.length >= 0'>
+                <mat-radio-group style="float: left; width: 50%;">
+                  <mat-radio-button [checked]="index === 0" class="pr-15"
+                    *ngFor="let area of billingAreaType; let index = index;" [value]="area.id"
+                    (change)="billingTypeChange($event)">
+                    {{area.name}}
+                  </mat-radio-button>
+                </mat-radio-group>
+                <span class="amount">{{ billingPrice |
+                  currency:productService?.currency:'symbol'}}</span>
+              </li>
+            </ul>
+
+            <ul class="total">
+              <li>Total <span class="count">{{ getTotal() |
+                  currency:productService?.currency:'symbol'}}</span>
+              </li>
+            </ul>
+
+            <!-- <div class="paymentFinal">
+              <mat-radio-group>
+                <mat-radio-button fxLayout="column" *ngFor="let payment of paymantWay" [value]="payment">{{payment}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div> -->
+
+            <div class="order">
+              <button class="btn-project" mat-raised-button color="primary"
+                onclick="document.getElementById('hiddenSaveButton').click()">PLACE
+                ORDER</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

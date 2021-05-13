@@ -1,0 +1,38 @@
+.background{
+    background: lightgray;
+    height: 100%;
+}
+
+.main{
+    padding-top: 60px;
+    padding-left: 10%;
+    padding-right: 10%;
+    height: 100%;
+}
+.grid{
+    padding-left: 5%;
+    padding-right: 5%;
+ }
+
+.card{
+    width: 200px;
+    height: 150px;
+}
+.z-depth {
+    /* box-shadow: 0 6px 6px rgba(10,16,20,.15), 0 0 52px rgba(10,16,20,.12) !important; */
+    transform: translate3d(0,0,0);
+    transition:  .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
+}
+
+.z-depth:hover {
+    /* box-shadow: 0 8px 8px rgba(10,16,20,.24), 0 0 8px rgba(10,16,20,.12) !important; */
+    transform: translate3d(0,0,0);
+    transition: .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);
+}
+
+.main-div{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

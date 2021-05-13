@@ -1,0 +1,53 @@
+<div class="product-item-2 swiper-container content" style="max-height: 1200px; overflow-y: auto;">
+   <div class="swiper-wrapper h-100" fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let product of product">
+         <!-- class="swiper-slide" -->
+         <mat-card fxLayout="column">
+            <div class="product-img">
+               <a class="product-link" [routerLink]="['/product', product.id]">
+                  <img [src]="product.base64StrSmall" alt="">
+               </a>
+               <div class="icons" fxLayout="column">
+                  <a (click)="addToWishlist(product)" class="hvr-icon-pulse-shrink">
+                     <mat-icon class="hvr-icon mat-icon-lg mat-icon material-icons mr-10">favorite_border</mat-icon>
+                  </a>
+                  <a (click)="openProductDialog(product)" class="hvr-icon-pulse-shrink">
+                     <mat-icon class="hvr-icon">remove_red_eye</mat-icon>
+                  </a>
+                  <a (click)="addToCompare(product)" class="hvr-icon-pulse-shrink">
+                     <mat-icon class="hvr-icon">cached</mat-icon>
+                  </a>
+               </div>
+            </div>
+            <div class="product-info-wrapper">
+               <span class="category">{{product.category.name}}</span>
+               <div class="title-wrap">
+                  <h4>{{product.name}}</h4>
+               </div>
+               <div class="stars">
+                  <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
+                  <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
+                  <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
+                  <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
+                  <mat-icon class="mat-icon-xs mat-icon material-icons ng-star-inserted">star_rate</mat-icon>
+               </div>
+               <div class="price-wrap" fxLayout="row" fxLayoutAlign="space-between center">
+                  <p>Tk {{product.price | number : '1.2-2'}}</p>
+                  <a (click)="addToCart(product)">
+                     <mat-icon mat-stroked-button color="primary" class="mat-icon-lg mat-icon material-icons">
+                        shopping_cart</mat-icon>
+                  </a>
+               </div>
+
+            </div>
+         </mat-card>
+      </div>
+
+   </div>
+   <!-- <button mat-mini-fab class="swiper-button-prev swipe-arrow">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+   </button>
+   <button mat-mini-fab class="swiper-button-next swipe-arrow">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+   </button> -->
+</div>

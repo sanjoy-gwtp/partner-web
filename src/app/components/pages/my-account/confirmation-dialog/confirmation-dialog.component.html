@@ -1,0 +1,21 @@
+<div class="product-dialog">
+    <div class="close-btn-outer">
+        <button mat-mini-fab color="warn" (click)="close()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div mat-dialog-content>
+        <div fxLayout="row wrap">
+            <div fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                <mat-form-field class="w-100">
+                    <label>Account successfully created. Do you want to login?</label>
+                </mat-form-field>
+            </div>
+            <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" ngClass.sm="mt-1" ngClass.xs="mt-1">
+                <button class="btn-project mr-10" mat-raised-button color="primary" (click)="close()">No</button>
+                <button class="btn-project" mat-raised-button color="primary" (click)="doYes()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
